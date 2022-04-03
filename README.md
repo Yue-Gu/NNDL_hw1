@@ -12,4 +12,14 @@ A 2-layer fully-connected neural network on MNIST
 这部分工作由NNLP_hw1_all_codes.py中modelSelection()函数实现；
 
 ## PART 2 模型训练
-首先定义NeuralNetwork()类，该类中定义了损失函数（均方误差损失函数+L2正则项），激活函数（softmax），前馈计算与各个参数的反向传播函数。首先用输入层、隐藏层、输出层、学习率、epoch以及正则项系数
+首先定义NeuralNetwork()类，该类中定义了损失函数（均方误差损失函数+L2正则项），激活函数（softmax），前馈计算与各个参数的反向传播函数。首先用输入层、隐藏层、输出层、学习率、epoch以及正则项系数初始化NeuralNetwork类。
+
+随后，使用该类的trainNN()函数，训练模型。该函数用到了该类中的前馈计算、反向传播等函数。最终输出结果为一个向量，[W1, W2, b1, b2, train_loss, test_loss, test_acc]。其中W1, W2, b1, b2为最后一个epoch结束后网络中的参数；train_loss为存储每个epoch中训练样本loss的向量，长度为epoch数目；test_loss为存储每轮epoch后模型在测试样本中loss的向量，长度为epoch数目；test_acc为存储每轮epoch后模型在测试样本中准确率的向量，长度为epoch数。
+
+最终trainNN()输出结果保存到output中。
+
+## PART 3 模型存储
+将PART 2中的结果分别保存到文本文件中。
+
+## PART 4 导入模型并测试
+使用numpy库中的loadtxt函数导入W1, W2, b1, b2中，存为array。之后使用testModel()函数计算模型在测试集上的准确率。testModel()中，将输入样本使用softmax激活函数以及前馈计算，得到最终的预测结果。之后计算并返回测试样本中的准确率。
